@@ -1,0 +1,33 @@
+# imports of external packages to use in our code
+import sys
+import math
+import numpy as np
+import matplotlib.pyplot as plt
+
+# import our random class from the Random.py file
+sys.path.append(".")
+from Random import Random
+
+
+# class instance of our Random class using seed
+random = Random() 
+    
+# create some random data
+N = 10000
+
+# an array of rayleigh numbers using our Random class
+myx = []
+for i in range(0,N):
+    myx.append(random.rayleigh())
+
+# create histogram of our data
+n, bins, patches = plt.hist(myx, 50, density=True, facecolor='g', alpha=0.75)
+
+# plot formating options
+plt.xlabel('x')
+plt.ylabel('Probability')
+plt.title("Rayleigh Distribution",fontweight="bold")
+plt.grid(True)
+
+# show figure (program only ends once closed
+plt.show()
